@@ -1,8 +1,16 @@
 # Insurance claim prediction
+**`analysis.ipynb`** is the main working notebook. It calls various functions present in other files.
+* The notebook is used to make predictions on the Insurance claims.
+* First I will discuss the main data-cleaning steps. Although the data we have looks clean however, in production line one can receive the data that is not clean for that scenario we have to incorporate methods that can help in data cleaning.
+* We need to deal with missing value. This comes under imputation
+   1. **Imputation**: To deal with missing values.
+      1. `most-frequent` for categorical features
+      2. `median` for numeric features
+   1. **Data Preprocessing**: Some machine learning algorithm expects data to be in similar scale so we need to perform transformation in our data such that they are in same scale.
+      4. `StandardScaler()` for numeric features
+      5. `One-Hot encoding` and `Ordinal encoding` for categorical features.
+      6. **`Tree`** based models are okay with `Ordinal encoding` but  **`Linear models and neural network`**works best with`One-Hot encoding`
 
-This will predict the 
-
-**`analysis.ipynb`** is the main working notebook. It calls various functions declared in other files.
 
 1. **`load_data.py`** contains the class DataCreate. This class serves multi-purpose. If has `train`, `test`,`features` and `label` as attribute and has following functions.
 
@@ -19,14 +27,7 @@ This will predict the
    1. `data_pipeline_tree()`: Function to create data pipeline for tree based model.
    2. `data_pipeline_linear()`: Function to create data pipeline for linear models.
    3. `ml_pipe()`: To create a machine learning pipeline. It employs a data pipeline and a classifier.
-   4. **Imputation**: To deal with missing values.
-      1. `most-frequent` for categorical features
-      2. `median` for numeric features
-   5. **Data Preprocessing**: To transform values such that algorithm can use them.
-      1. `StandardScaler()` for numeric features
-      2. `One-Hot encoding` and `Ordinal encoding` for categorical features.
-      3. **`Tree`** bases models are okay with `Ordinal encoding` but  **`Linear models and neural network`**works best with`One-Hot encoding`
-       
+   
 1. **`idfeats.py`**: Contains a class IDfeatures that has functions to perform preprocessing of ID features.
 
     1. **`postal_code_features()`**: Functions to use postal_code features. It keeps top `nvals` feature values in separate class and club rest of them in one category. Can be useful for high cardinality categorical features where category distribution is skewed.
