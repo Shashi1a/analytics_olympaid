@@ -1,5 +1,7 @@
 # Insurance claim prediction
 **`analysis.ipynb`** is the main working notebook. It calls various functions present in other files.
+
+link[https://shashi1a.github.io/analytics_olympaid/]{url} to the html
 * The notebook is used to make predictions on the Insurance claims.
 * First I will discuss the main data-cleaning steps. Although the data we have looks clean however, in production line one can receive the data that is not clean for that scenario we have to incorporate methods that can help in data cleaning.
 * We need to deal with missing value. This comes under imputation
