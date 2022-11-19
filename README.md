@@ -28,11 +28,12 @@ This will predict the
       1. `StandardScaler()` for numeric features
       2. `One-Hot encoding` and `Ordinal encoding` for categorical features.
       3. **`Tree`** bases models are okay with `Ordinal encoding` but  **`Linear models and neural network`**works best with`One-Hot encoding`
-   6. **`idfeats.py`**: Contains a class IDfeatures that has functions to perform preprocessing of ID features.
+       
+1. **`idfeats.py`**: Contains a class IDfeatures that has functions to perform preprocessing of ID features.
 
       1. **`postal_code_features()`**: Functions to use postal_code features. It keeps top `nvals` feature values in separate class and club rest of them in one category. Can be useful for high cardinality categorical features where category distribution is skewed.
       2. `ID_features()`: Function to use ID features. Keeps only top `nvals` feature values and put rest of the rare values in one category. Similar to the `postal_code_features()`.
-   7. **`UtilityFn`**
-   8. **`ParamTune.py`**
-   9. **`FeatureEngineering.py`**
-   10.
+1. **`UtilityFn`**
+1. **`ParamTune.py`**
+1. **`FeatureEngineering.py`**
+
