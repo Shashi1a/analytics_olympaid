@@ -31,9 +31,17 @@ This will predict the
        
 1. **`idfeats.py`**: Contains a class IDfeatures that has functions to perform preprocessing of ID features.
 
-      1. **`postal_code_features()`**: Functions to use postal_code features. It keeps top `nvals` feature values in separate class and club rest of them in one category. Can be useful for high cardinality categorical features where category distribution is skewed.
-      2. `ID_features()`: Function to use ID features. Keeps only top `nvals` feature values and put rest of the rare values in one category. Similar to the `postal_code_features()`.
-1. **`UtilityFn`**
-1. **`ParamTune.py`**
-1. **`FeatureEngineering.py`**
+    1. **`postal_code_features()`**: Functions to use postal_code features. It keeps top `nvals` feature values in separate class and club rest of them in one category. Can be useful for high cardinality categorical features where category distribution is skewed.
+    1. `ID_features()`: Function to use ID features. Keeps only top `nvals` feature values and put rest of the rare values in one category. Similar to the `postal_code_features()`.
+1. **`UtilityFn`**: Contains UtilityFn class that contains few commonly used functions.
+   1. **`spit_data()`**: To separate the training data into features (**X**) and labels (**y**). Also split the data into training data and validation data that keeps 20% of the data for the validation. The data is split into a stratified way based on the label  **y**.
+   2. **`print_score()`**: This functions takes as an argument the trained machine learning pipeline (ml_pipe) and computes the log-loss for the training and validation data.
+   3. **`data_submit()`**: This function creates the submission file that stored prediction probability for the test set. It takes trained ml pipeline as an argument, features (to be used for the prediction) and the submission file name.
+   4. **`stackedPred()`**: Can be used to stack two pretrained classifiers to improve the predictions made by individual models.
+   5. **`create_full_pipe()`**: This function creates the full machine learning pipeline, fit the model on the training data, prints the performance of the model and stores the submission file for the test data.
+3. **`tunemodel.py`** This file contains the ParamTune class. It contains functions to tune the hyperparameter of a random-forest model and a gradient-boosting classifier model.
+   1. **`tune_params_gb()`**: Performs hyperparameter tuning for a gradient-boosting classifier on the training and validation data and the ml pipeline using the `optuna` library. The function returns the optimized values of the model parameter and stores them. They can be used later for training and making predictions on the test data.
+   2. **`tune_params_rf()`**: Used to optimize the random forest classifier. The metric that is optimized is log-loss and it returns the hyper-parameter of the optimized model.
+
+5. **`FeatureEngineering.py`**
 
