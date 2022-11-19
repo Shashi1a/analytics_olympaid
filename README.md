@@ -4,12 +4,12 @@
 * First I will discuss the main data-cleaning steps. Although the data we have looks clean however, in production line one can receive the data that is not clean for that scenario we have to incorporate methods that can help in data cleaning.
 * We need to deal with missing value. This comes under imputation
    1. **Imputation**: To deal with missing values.
-      1. `most-frequent` for categorical features
-      2. `median` for numeric features
+     1. `most-frequent` for categorical features
+     2. `median` for numeric features
    1. **Data Preprocessing**: Some machine learning algorithm expects data to be in similar scale so we need to perform transformation in our data such that they are in same scale.
-      4. `StandardScaler()` for numeric features
-      5. `One-Hot encoding` and `Ordinal encoding` for categorical features.
-      6. **`Tree`** based models are okay with `Ordinal encoding` but  **`Linear models and neural network`**works best with`One-Hot encoding`
+     4. `StandardScaler()` for numeric features
+     5. `One-Hot encoding` and `Ordinal encoding` for categorical features.
+     6. **`Tree`** based models are okay with `Ordinal encoding` but  **`Linear models and neural network`**works best with`One-Hot encoding`
 
 
 1. **`load_data.py`** contains the class DataCreate. This class serves multi-purpose. If has `train`, `test`,`features` and `label` as attribute and has following functions.
