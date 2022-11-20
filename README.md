@@ -71,13 +71,13 @@ Contains the `DataPlot` class that has  functions I used to plot the categorical
 
 ```python
 ### plot a categorical feature cat_1 
-DataPlot.FreqPlot(data.train: pd.DataFrame, data.test: pd.DataFrame,cat_1: str, cat_1name: str)
+DataPlot.FreqPlot(data,'col': str, 'col_name': str)
 
 ### plot a numeric feature
-DataPlot.histPlot(data.train: pd.DataFrame, data.test: pd.DataFrame, 'col': str, 'colname':str)
+DataPlot.histPlot(data 'col': str, 'colname':str)
 
 ### plot Id feature
-DataPlot.plotIDs()
+DataPlot.plotIDs(data,20:int,'POSTAL_CODE':Str,'POSTAL_CODE','N(POSTAL_CODE)')
 ```
 
 ### **`pipelines.py`**
@@ -87,13 +87,23 @@ Contains the class `pipe_line` that has function to create various data pipeline
 1. `data_pipeline_tree()`: Function to create data pipeline for tree based model.
 2. `data_pipeline_linear()`: Function to create data pipeline for linear models.
 3. `ml_pipe()`: To create a machine learning pipeline. It employs a data pipeline and a classifier.
+   ```python
+   ### create the data pipeline for tree model
+
+   pipe_line.data_pipeline_tree(data)
+
+   ### create the data pipeline for linear models
+   pipe_line.data_pipeline_linear(data)
+
+
+
+   ```
 
 ### **`idfeats.py`**
 
-Contains a class `IDfeatures` that has functions to perform preprocessing of ID features.
+Contains the class `IDfeatures` that has functions to perform preprocessing of ID features.
 
-1. **`postal_code_features()`**: Functions to use postal_code features. It keeps top `nvals` feature values in separate class and club rest of them in one category. Can be useful for high cardinality categorical feature
-   s where category distribution is skewed.
+1. **`postal_code_features()`**: Functions to use postal_code features. It keeps top `nvals` feature values in separate class and club rest of them in one category. Can be useful for high cardinality categorical features where category distribution is skewed.
 2. `ID_features()`: Function to use ID features. Keeps only top `nvals` feature values and put rest of the rare values in one category. Similar to the `postal_code_features()`.
 
 ### **`utilitfn.py`**
@@ -108,11 +118,16 @@ Contains `UtilityFn` class that contains few commonly used functions.
 
 ### **`tunemodel.py`**
 
-This file contains the `ParamTune class`. It contains functions to tune the hyperparameter of a *random-forest model* and a *gradient-boosting classifier model*.
+This file contains the `ParamTune` class. It contains functions to tune the hyperparameter of a *random-forest model* and a *gradient-boosting classifier model*.
 
 1. **`tune_params_gb()`**: Performs hyperparameter tuning for a gradient-boosting classifier on the training and validation data and the ml pipeline using the `optuna` library. The function returns the optimized values of the model parameter and stores them. They can be used later for training and making predictions on the test data.
 2. **`tune_params_rf()`**: Used to optimize the random forest classifier. The metric that is optimized is log-loss and it returns the hyper-parameter of the optimized model.
 
 ### **`featEng_1.py`**
 
-Class that contain methods to create new features.
+Has the `FeatureEngineering` class that contain methods to create new features.
+
+1. `convertDUIS()`: perform binning of  DUIS categorical feature.
+2. `convertSpeed()`: performs binning of the speeding violations feature.
+3. `convertAccident()`: performs binning of the past accidents feature.
+4. `marriedChil()`: performs categorical feature combining marriage and child features.
